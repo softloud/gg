@@ -57,14 +57,17 @@ subgraph cluster_sis {
         style = dashed
         edge [color="#CC5500B3"]
 
+        pipeline [shape=box, style=dashed, fillcolor="#6B7B3AB3", style=filled]
 
-        source [label="source", fillcolor="#CC5500B3", style=filled]
-        pipeline [shape=box, style=dashed]
+
+        source [label="source", fillcolor="#6B7B3AB3", style=filled]
         raw  [label="data-raw/",shape=hexagon, fillcolor="#6B7B3AB3", style=filled]
+        semantic [fillcolor="#6B7B3AB3", style=filled]
+        analytical [label="analytic", fillcolor="#6B7B3AB3", style=filled]
 
         raw->source [color="#6B7B3A"]
-        source->semantic
-        semantic->analytical [style=dashed]
+        source->semantic [color="#6B7B3A"]
+        semantic->analytical [style=dashed, color="#6B7B3A"]
 
     }
 

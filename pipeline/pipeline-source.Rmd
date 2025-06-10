@@ -120,22 +120,6 @@ source_top_3_tehri
 ### SDG labelling
 
 ```{r}
-# Read file and clean names
-source_sdg <- read_csv(here("data-raw", "SDG.csv")) |> 
-	cleanup_colnames() |>
-	rename(sdg_id = sdg, sdg_label = name) |>
-	mutate(sdg_id = str_replace(sdg_id, "SDG", "SDG "))
-
-# Dimensions of data
-dim(source_sdg)
-
-print(source_sdg)
-
-```
-
-```{r}
-# source sdg original
-source_sdg 
 
 # generate source_sdg from tehridataset with labels
 source_sdg <- source_top_3_tehri |> 
@@ -162,7 +146,7 @@ source_sdg <- source_top_3_tehri |>
 	)) |>
 	mutate(
 		sdg_int = str_extract(sdg_id, "\\d+") |> as.integer(),
-		sdg_label = str_c(sdg_label, " (", sdg_id, ")"),
+		sdg_text = str_c(sdg_label, " (", sdg_id, ")"),
 		y = case_when(
       sdg_int <= 6 ~ 3,
       sdg_int <= 12 ~ 2,
@@ -173,7 +157,6 @@ source_sdg <- source_top_3_tehri |>
 	) |>
 	arrange(sdg_int)
 
-
 ```
 
 ## Tidy up tehri  data sdg labels
@@ -182,7 +165,7 @@ source_sdg <- source_top_3_tehri |>
 
 source_top_3_tehri <-
 	source_top_3_tehri |>
-		left_join(source_sdg, by = "sdg_label") |>
+		left_join(source_sdg |> select(sdg_id, sdg_label), by = "sdg_label") |>
 		select(-sdg_label)
 
 ```

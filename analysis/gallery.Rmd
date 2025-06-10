@@ -3,12 +3,9 @@
 Good Enough Lab proofs of concept for Dr Gupta to consider.
 
 ```{r message=FALSE}
-
 library(tidyverse)
 library(here)
 library(gt)
-
-
 ```
 
 ## pictogram
@@ -18,7 +15,6 @@ library(gt)
 source_sdg <- read_csv(here("pipeline/pipeline-data/source_sdg.csv"))
 
 source_sdg |> gt()
-
 ```
 
 ## sort out layout
@@ -41,8 +37,6 @@ source_sdg |>
     y = "",
     x = ""
   )
-
-
 ```
 
 ## size by proportion of respondents
@@ -50,14 +44,12 @@ source_sdg |>
 ```{r}
 # grab analytical layer
 
-analytical_ranking_top_3 <- read_csv(here("pipeline/pipeline-data/analytical_ranking_top_3.csv")) 
-
-
-
+analytical_ranking_top_3 <- read_csv(here("pipeline/pipeline-data/analytical_ranking_top_3.csv"))
 ```
 
 ```{r}
-analytical_ranking_top_3 |>
+plotdat <-
+  analytical_ranking_top_3 |>
   select(respondent_id, sdg_id, ranking, region) |>
   group_by(region) |>
   mutate(
@@ -74,14 +66,28 @@ analytical_ranking_top_3 |>
   # chookity, shoot the laser
   left_join(source_sdg, by = "sdg_id") |>
   arrange(sdg_int) |>
-  mutate(prop = respondents / total_respondents,
-  label_size = prop * 100) |>
+  mutate(
+    prop = respondents / total_respondents,
+    percent_respondents = str_c(round(prop * 100)), " per cent"
+  ) |>
   ungroup() |>
+  arrange(region, desc(prop))
+
+
+gt::gt(
+  plotdat |>
+    select(region, sdg_id, sdg_text, respondents, total_respondents, percent_respondents) |>
+    group_by(region) |>
+    slice(1:3),
+  groupname_col = "region"
+)
+
+plotdat |>
   ggplot() +
-    geom_text(aes(
-    x = x, y = y, label=sdg_int, colour = 1-prop#, size = label_size
-  ), size = 10) +
-  theme_minimal(base_size = 30) +
+  geom_text(aes(
+    x = x, y = y, label = sdg_int, colour = 1 - prop # , size = label_size
+  ), size = 5) +
+  theme_minimal(base_size = 20) +
   theme(
     panel.grid = element_blank(),
     axis.text = element_blank()
@@ -91,13 +97,64 @@ analytical_ranking_top_3 |>
     y = "",
     x = ""
   ) +
-  facet_wrap(~ region)
+  facet_wrap(~region)
+```
 
+## experiment with a heatmap
 
+Intention: x axis will be region, y axis sdg
 
+```{r}
+library(gt)
+
+plotdat |>
+  select(region, sdg_text, percent_respondents) |>
+  pivot_wider(
+    names_from = region,
+    values_from = percent_respondents
+  ) |>
+  gt(rowname_col = "sdg_text") |>
+  data_color(
+    columns = c(arunachal, tehri)
+  )
 ```
 
 
+## barplot
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+plotdat |>
+  select(region, sdg_text, percent_respondents) |>
+  mutate(percent_respondents = as.numeric(percent_respondents)) |>
+  ggplot(aes(x = sdg_text, y = percent_respondents, fill = region)) +
+  geom_col(position = position_dodge()) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Percent of Respondents",
+    fill = "Region"
+  ) +
+  theme_minimal(base_size = 20) +
+  theme(
+    axis.text.y = element_text(size = 20),
+    legend.position = "top"
+  )
+```
+
+
+```{r}
+
+analytical_ranking_top_3 |>
+  filter(sdg_int == 5) |>
+  group_by(gender) |>
+  summarise(
+    chosen = n()
+  ) 
+
+```
 
 ## treemap of preference
 

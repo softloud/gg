@@ -190,10 +190,16 @@
 <polygon fill="none" stroke="black" stroke-dasharray="5,2" points="127.5,-599.48 40.5,-599.48 40.5,-563.48 127.5,-563.48 127.5,-599.48"/>
 <text text-anchor="middle" x="84" y="-577.78" font-family="Times,serif" font-size="14.00">validation</text>
 </g>
-<!-- source -->
+<!-- pipeline -->
 <g id="node14" class="node">
+<title>pipeline</title>
+<polygon fill="#6b7b3a" fill-opacity="0.701961" stroke="black" points="501,-427.29 427,-427.29 427,-391.29 501,-391.29 501,-427.29"/>
+<text text-anchor="middle" x="464" y="-405.59" font-family="Times,serif" font-size="14.00">pipeline</text>
+</g>
+<!-- source -->
+<g id="node15" class="node">
 <title>source</title>
-<ellipse fill="#cc5500" fill-opacity="0.701961" stroke="black" cx="346" cy="-508.48" rx="41.69" ry="18"/>
+<ellipse fill="#6b7b3a" fill-opacity="0.701961" stroke="black" cx="346" cy="-508.48" rx="41.69" ry="18"/>
 <text text-anchor="middle" x="346" y="-504.78" font-family="Times,serif" font-size="14.00">source</text>
 </g>
 <!-- source&#45;&gt;entities -->
@@ -205,20 +211,14 @@
 <!-- semantic -->
 <g id="node17" class="node">
 <title>semantic</title>
-<ellipse fill="none" stroke="black" cx="350" cy="-581.48" rx="52.79" ry="18"/>
+<ellipse fill="#6b7b3a" fill-opacity="0.701961" stroke="black" cx="350" cy="-581.48" rx="52.79" ry="18"/>
 <text text-anchor="middle" x="350" y="-577.78" font-family="Times,serif" font-size="14.00">semantic</text>
 </g>
 <!-- source&#45;&gt;semantic -->
 <g id="edge9" class="edge">
 <title>source&#45;&gt;semantic</title>
-<path fill="none" stroke="#cc5500" stroke-dasharray="1,5" stroke-opacity="0.701961" d="M346.97,-526.67C347.42,-534.69 347.97,-544.44 348.47,-553.42"/>
-<polygon fill="#cc5500" fill-opacity="0.701961" stroke="#cc5500" stroke-opacity="0.701961" points="344.98,-553.67 349.04,-563.46 351.97,-553.27 344.98,-553.67"/>
-</g>
-<!-- pipeline -->
-<g id="node15" class="node">
-<title>pipeline</title>
-<polygon fill="none" stroke="black" stroke-dasharray="5,2" points="501,-427.29 427,-427.29 427,-391.29 501,-391.29 501,-427.29"/>
-<text text-anchor="middle" x="464" y="-405.59" font-family="Times,serif" font-size="14.00">pipeline</text>
+<path fill="none" stroke="#6b7b3a" stroke-dasharray="1,5" d="M346.97,-526.67C347.42,-534.69 347.97,-544.44 348.47,-553.42"/>
+<polygon fill="#6b7b3a" stroke="#6b7b3a" points="344.98,-553.67 349.04,-563.46 351.97,-553.27 344.98,-553.67"/>
 </g>
 <!-- raw&#45;&gt;entity -->
 <g id="edge15" class="edge">
@@ -241,32 +241,32 @@
 <!-- analytical -->
 <g id="node18" class="node">
 <title>analytical</title>
-<ellipse fill="none" stroke="black" cx="361" cy="-654.48" rx="55.79" ry="18"/>
-<text text-anchor="middle" x="361" y="-650.78" font-family="Times,serif" font-size="14.00">analytical</text>
+<ellipse fill="#6b7b3a" fill-opacity="0.701961" stroke="black" cx="352" cy="-654.48" rx="47.39" ry="18"/>
+<text text-anchor="middle" x="352" y="-650.78" font-family="Times,serif" font-size="14.00">analytic</text>
 </g>
 <!-- semantic&#45;&gt;analytical -->
 <g id="edge10" class="edge">
 <title>semantic&#45;&gt;analytical</title>
-<path fill="none" stroke="#cc5500" stroke-dasharray="5,2" stroke-opacity="0.701961" d="M352.66,-599.67C353.91,-607.69 355.42,-617.44 356.81,-626.42"/>
-<polygon fill="#cc5500" fill-opacity="0.701961" stroke="#cc5500" stroke-opacity="0.701961" points="353.37,-627.11 358.36,-636.46 360.29,-626.04 353.37,-627.11"/>
+<path fill="none" stroke="#6b7b3a" stroke-dasharray="5,2" d="M350.48,-599.67C350.71,-607.69 350.98,-617.44 351.24,-626.42"/>
+<polygon fill="#6b7b3a" stroke="#6b7b3a" points="347.74,-626.56 351.52,-636.46 354.74,-626.36 347.74,-626.56"/>
 </g>
 <!-- analytical&#45;&gt;analysis -->
 <g id="edge12" class="edge">
 <title>analytical&#45;&gt;analysis</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M383.38,-671.07C397.01,-680.55 414.67,-692.84 429.89,-703.44"/>
-<polygon fill="black" stroke="black" points="428.32,-706.61 438.53,-709.45 432.32,-700.86 428.32,-706.61"/>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M375.27,-670.37C390.43,-680.06 410.49,-692.9 427.61,-703.85"/>
+<polygon fill="black" stroke="black" points="425.94,-706.93 436.25,-709.37 429.71,-701.04 425.94,-706.93"/>
 </g>
 <!-- analytical&#45;&gt;entities -->
 <g id="edge18" class="edge">
 <title>analytical&#45;&gt;entities</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M331.05,-669.85C307.68,-681.06 275.1,-696.69 250.08,-708.69"/>
-<polygon fill="black" stroke="black" points="248.41,-705.62 240.9,-713.1 251.43,-711.93 248.41,-705.62"/>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M324.87,-669.34C303.25,-680.39 272.78,-695.95 249.1,-708.05"/>
+<polygon fill="black" stroke="black" points="247.38,-705 240.06,-712.66 250.56,-711.23 247.38,-705"/>
 </g>
 <!-- analytical&#45;&gt;migration -->
 <g id="edge19" class="edge">
 <title>analytical&#45;&gt;migration</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M342.28,-671.77C332.5,-680.42 320.43,-691.34 310,-701.48 290.62,-720.33 287.76,-727.04 268,-745.48 256.44,-756.28 243.08,-767.56 231.5,-777"/>
-<polygon fill="black" stroke="black" points="229.01,-774.52 223.42,-783.52 233.4,-779.96 229.01,-774.52"/>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M337.14,-671.63C314.98,-695.67 275.11,-738.77 268,-745.48 256.5,-756.34 243.15,-767.63 231.56,-777.07"/>
+<polygon fill="black" stroke="black" points="229.07,-774.58 223.48,-783.58 233.46,-780.03 229.07,-774.58"/>
 </g>
 <!-- human&#45;&gt;raw -->
 <g id="edge13" class="edge">

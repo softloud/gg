@@ -55,10 +55,18 @@ analytical_ranking_top_3 <-
     ) |>
     left_join(
       semantic_respondent, by = "respondent_id"
-    )
+    ) |>
+    select(-sdg_label) |>
+    rename(sdg_label = sdg_text)
+
+# should have the y and x calcs here
+
 
 ```
 
+```{r}
+analytical_ranking_top_3
+```
 
 ## write data
 
