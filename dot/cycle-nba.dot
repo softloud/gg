@@ -1,0 +1,32 @@
+digraph cycle_nba {
+
+   subgraph cluster_surfacing {
+    node [style=solid, style=filled]
+    style=dashed
+
+    s_comm  [
+      label="Nature-based Approaches from Local Communities", style=dashed, shape=box]
+    # set label for each community
+ # set label for each community
+    s_panchayat [label="Van Pachayat\nUttarakhand", 
+      fillcolor="lightgreen"]
+    s_bishnoi [label="Bishnoi\nRajasthan",
+      fillcolor="orange"]
+    s_idu [label="Idu Mishnu\nArunachal Pardesh",
+      fillcolor="lightblue"]
+    s_maghalaya [label="Sacred Graves\nMaghalaya",
+      fillcolor="yellow"]
+
+    s_comm -> s_panchayat [style=invis]
+    s_comm -> s_bishnoi [style=invis]
+    s_comm -> s_idu [style=invis]
+    s_comm -> s_maghalaya [style=invis]
+
+  }
+
+  conservation 
+  global
+  policy
+
+  s_comm ->  conservation -> global -> policy -> s_comm
+}

@@ -1,0 +1,65 @@
+digraph indig {
+  style=dashed
+  rankdir=TB
+  node [shape=box]
+
+  subgraph cluster_indig {
+    
+
+  # set the label for top 
+  top [label = "Problematic descriptors for local communities \n
+    Indigenous People & Local Communities\n
+  Scheduled Tribes\n
+  
+  erase cultural difference", 
+    style=filled]  
+
+  subgraph cluster_communities {
+    style=invis
+    node[style=dashed]
+    edge[style=dashed]
+
+    # set label for each community
+    panchayat [label="Van Pachayat\nUttarakhand"]
+    bishnoi [label="Bishnoi\nRajasthan"]
+    idu [label="Idu Mishnu\nArunachal Pardesh"]
+    maghalaya [label="Sacred Graves\nMaghalaya"]
+
+  }
+
+
+    # add edge for each community from top 
+  top -> panchayat
+  top -> bishnoi
+  top -> idu
+  top -> maghalaya
+
+  }
+
+  subgraph cluster_surfacing {
+    node [style=solid, style=filled]
+
+    s_comm  [
+      label="Nature-based Approaches from Local Communities", style=dashed]
+    # set label for each community
+ # set label for each community
+    s_panchayat [label="Van Pachayat\nUttarakhand", 
+      fillcolor="lightgreen"]
+    s_bishnoi [label="Bishnoi\nRajasthan",
+      fillcolor="orange"]
+    s_idu [label="Idu Mishnu\nArunachal Pardesh",
+      fillcolor="lightblue"]
+    s_maghalaya [label="Sacred Graves\nMaghalaya",
+      fillcolor="yellow"]
+
+    s_comm -> s_panchayat [style=invis]
+    s_comm -> s_bishnoi [style=invis]
+    s_comm -> s_idu [style=invis]
+    s_comm -> s_maghalaya [style=invis]
+
+
+  }
+
+  panchayat -> s_panchayat [style=invis]
+
+}

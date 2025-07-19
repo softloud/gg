@@ -1,0 +1,57 @@
+digraph G {
+  rankdir=TB
+  node [shape=box]
+
+  subgraph cluster_communities {
+    style=dashed
+    node [style=filled]
+
+    # set the label for top 
+    top [label = "Local Communities of India", style=dashed]  
+
+    # set label for each community
+    panchayat [label="Van Pachayat\nUttarakhand", 
+      fillcolor="lightgreen"]
+    bishnoi [label="Bishnoi\nRajasthan",
+      fillcolor="orange"]
+    idu [label="Idu Mishnu\nArunachal Pardesh",
+      fillcolor="lightblue"]
+    maghalaya [label="Sacred Graves\nMaghalaya",
+      fillcolor="yellow"]
+
+  }
+
+  subgraph cluster_ecosystem {
+    style=dashed
+    ecosystem [style=dashed]
+    edge [color=green]
+
+    people
+    nature
+
+    nature -> people
+    people -> nature
+  }
+
+  # other nodes in the chain
+  trad [label="Traditional Practices & Cultural Taboos"]
+  vs [label="Nature-centric & People-centric Approaches"]
+  biodiversity [label="Global Biodiversity & Climate Change Targets"]
+
+  # add edge for each community from top 
+  top -> panchayat [style=invis]
+  top -> bishnoi [style=invis]
+  top -> idu [style=invis]
+  top -> maghalaya [style=invis]
+
+  # add edge for each community to trad
+  panchayat -> trad
+  bishnoi -> trad
+  idu -> trad
+  maghalaya -> trad
+    
+  trad -> ecosystem -> vs -> biodiversity
+
+  
+
+}

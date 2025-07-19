@@ -1,0 +1,73 @@
+digraph G {
+  edge [style=dotted]
+  rankdir=BT
+
+  subgraph cluster_topdown {
+
+    style="dashed"
+
+    topdown [shape=box, style=dashed]
+
+    un -> ngo 
+
+
+
+  }
+
+  subgraph cluster_nbs {
+    style="dashed"
+
+
+    people [style=dashed, shape=box]
+
+    bishnoi 
+
+    panchayat 
+
+    idu 
+
+    groves   
+
+    
+    }
+
+  subgraph cluster_knowledge {
+    style="dashed"
+
+    knowledge [
+      label="cultural knowledge",
+      style=dashed,shape=box]
+
+    ethics
+
+    community
+
+    peace
+
+    protection
+
+
+
+  }
+
+  biodiversity
+
+  people -> knowledge 
+  
+  knowledge -> biodiversity [label="harmony", style=solid, color=green]
+  ngo -> biodiversity [color="red", style=solid, label="suboptimal because no NbS"]
+
+  groves -> protection -> biodiversity
+  bishnoi -> ethics -> biodiversity
+  panchayat -> community -> biodiversity
+  idu -> peace -> biodiversity
+
+  people -> un [color=red, style=solid, 
+    label="NbA not transferred"]
+
+  knowledge -> un [color=green, style=solid, label="NbA advocacy"]
+
+
+
+
+}

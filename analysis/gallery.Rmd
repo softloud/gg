@@ -8,6 +8,63 @@ library(here)
 library(gt)
 ```
 
+
+## test leaflet
+
+```{r}
+library(tidyverse)
+library(leaflet)
+library(gt)
+library(htmltools)
+library(glue)
+
+# read in mapvis data
+
+mapvis_dat <- read_tsv("data-raw/mapvis.tsv")
+
+mapvis_dat <- mapvis_dat |>
+  mutate(
+    emoji = case_when(
+      place == "Van Panchayats of Uttarakhand" ~ "👥🌲",
+      place == "Bishnoi of Rajasthan" ~ "🌿",
+      place == "Idu Mishmi of Arunachal Pradesh" ~ "🐅",
+      place == "Sacred Groves of Meghalaya" ~ "🙏🌳",
+      TRUE ~ "❓"
+    )
+  )
+
+
+
+leaflet(mapvis_dat) |>
+  addProviderTiles(providers$CartoDB.Positron) |>
+  addAwesomeMarkers(
+    lat = ~latitude,
+    lng = ~longitude,
+    icon = ~makeAwesomeIcon(
+      icon = sub("fa-", "", fontawesome),
+      library = "fa",
+      markerColor = "green"
+    )
+  ) |>
+  addLabelOnlyMarkers(
+    lat = ~latitude + 0.5,  # tweak offset vertically
+    lng = ~longitude + 0.5, # tweak offset horizontally
+    label = ~lapply(glue("{emoji}<b>{place}</b><br><i>{title}</i>"), HTML),
+    labelOptions = labelOptions(
+      noHide = TRUE,
+      direction = 'auto',
+      textsize = "12px",
+      style = list(
+        "background-color" = "white",
+        "border-color" = "black",
+        "border-radius" = "5px",
+        "padding" = "5px"
+      )
+    )
+  )
+
+```
+
 ## pictogram
 
 ```{r message=FALSE}

@@ -1,0 +1,42 @@
+digraph G {
+  edge [style=dashed]
+  node [style=filled]
+  # bgcolor="#fdf6e3"
+  shape="6,12"
+
+  subgraph cluster_topdown {
+    rankdir=TB
+
+    decisionmakers [label="DECISION-MAKERS", shape="circle"]
+    nbs [label="Nature-based Solutions\n(NbS)", fillcolor="#7a6846b3"]
+    humans [label="People", shape=circle,  fillcolor="#856e6eb3"]
+    nature [label="Nature", fillcolor="#708070b3"]
+    biodiversity_top [label="Global Targets\nBiodiversity & Climate Change"]
+
+    decisionmakers -> nbs
+    nbs -> humans [style=solid, label="NbS divides\nPeople & Nature"] 
+    nbs -> nature [color="#7a6846", style=solid]
+    humans -> biodiversity_top
+    nature -> biodiversity_top
+
+  }
+
+  subgraph cluster_trad {
+    rankdir=BT
+
+    people [label="People", shape=circle, fillcolor="#856e6eb3"]
+    nba[label="Nature-based Approaches\n(NbA)",fillcolor="#708070b3"]
+    nature_trad [label="Nature",fillcolor="#708070b3"]
+    biodiversity  [label="Sustainable & Socially-just\nGlobal Targets"]
+    decisionmakers_alt [label="DECISION-MAKERS", shape="circle"]
+
+    people -> nba
+    nature_trad -> nba [label="NbA unifies\nPeople & Nature"]
+    nba -> decisionmakers_alt
+
+    decisionmakers_alt -> biodiversity [color="#708070", style=solid] 
+
+
+  }
+
+}

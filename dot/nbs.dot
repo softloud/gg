@@ -1,0 +1,15 @@
+digraph nbs {
+  node [shape=box]
+
+  # objects
+  decision [label="Decision-makers"]
+  nbs [label="Nature-based Solutions"]
+  people [label="People"] 
+  nature [label="Nature"]
+
+  # arrows
+  decision -> nbs 
+  nbs -> people
+  nbs -> nature
+
+}
